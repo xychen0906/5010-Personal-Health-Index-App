@@ -15,50 +15,26 @@ from datetime import datetime
 warnings.filterwarnings("ignore", category=FutureWarning)
 
 
-# In[19]:
-
+app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
+server = app.server
 
 df = pd.read_csv('purine data new.csv')
-df
-
-
-# In[20]:
-
 
 user = pd.read_csv('gout_patient_data.csv')
-user
-
-
-# In[21]:
 
 
 user['Date'] = user['Date'].apply(lambda x: datetime.strptime(x, "%d/%m/%Y"))
 
 
-# In[22]:
-
-
 user['Date'] = pd.to_datetime(user['Date'])
-user.info()
-
-
-# In[23]:
 
 
 user['Month'] = pd.to_datetime(user['Date']).dt.month
 
 
-# In[24]:
-
 
 new_user = pd.melt(user, id_vars=['Date','Month','User'], var_name='Categories', value_name='Value')
-new_user.head()
 
-
-# In[25]:
-
-
-app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
 food_quantities = {food: 0 for food in df['Foods']}
 
