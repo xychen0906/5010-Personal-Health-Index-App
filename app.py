@@ -16,7 +16,7 @@ server = app.server
 
 df = pd.read_csv('Purine data new.csv')
 
-user = pd.read_excel('gout_patient_data.xlsx')
+user = pd.read_csv('gout_patient_data.csv')
 
 user['Date'] = pd.to_datetime(user['Date'])
 
