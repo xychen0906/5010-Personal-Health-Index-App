@@ -1,8 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[105]:
-
 
 import dash
 from dash import Dash, html, dcc, Input, Output
@@ -15,43 +10,21 @@ warnings.filterwarnings("ignore", category=FutureWarning)
 
 
 # In[106]:
+app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
+server = app.server
 
 df = pd.read_csv('purine data new.csv')
-df
-
-
-# In[107]:
-
 
 user = pd.read_excel('gout_patient_data.xlsx')
-user
-
-
-# In[108]:
-
 
 user['Date'] = pd.to_datetime(user['Date'])
-user.info()
-
-
-# In[109]:
-
 
 user['Month'] = pd.to_datetime(user['Date']).dt.month
 
 
-# In[110]:
-
-
 new_user = pd.melt(user, id_vars=['Date','Month','User'], var_name='Categories', value_name='Value')
-new_user.head()
 
-
-# In[181]:
-
-
-app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
 food_quantities = {food: 0 for food in df['Foods']}
 
@@ -294,17 +267,4 @@ def update_user_intake(n_clicks, selected_food, weight):
     return total_purines_intake_formatted, fig
 
 if __name__ == '__main__':
-    app.run_server(debug=True, port=8061)
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
+    app.run_server(debug=True)
