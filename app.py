@@ -1,8 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[18]:
-
 
 import dash
 from dash import Dash, html, dcc, Input, Output
@@ -41,7 +36,7 @@ food_quantities = {food: 0 for food in df['Foods']}
 food_intake = []
 
 app.layout = html.Div(children=[
-    # 左侧部分
+    
     html.Div(children=[
         html.Nav(className="navbar navbar-expand-lg bg-primary",style={'background-color': '#73B3D9'}, **{"data-bs-theme": "dark"}, children=[
             html.Div(className="container-fluid", children=[
@@ -82,9 +77,9 @@ app.layout = html.Div(children=[
         html.Br(),
         html.Br(),
 
-        # 中间部分
+       
         html.Div([
-            # 折线图
+            
             html.Div([
                 html.H2('Change in Personal Health Index', style={'font-size': '30px','color': '#0E367C'}),
                 dcc.Dropdown(
@@ -133,7 +128,7 @@ app.layout = html.Div(children=[
             
     html.Br(),
         
-    # 显示新闻标题
+   
     html.Div([
         dbc.Card(
             dbc.CardBody([
@@ -277,17 +272,6 @@ def update_user_intake(n_clicks, selected_food, weight):
     return total_purines_intake_formatted, fig
 
 if __name__ == '__main__':
-    app.run_server(debug=True, port=8061)
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
+    app.run_server(debug=True)
 
 
