@@ -1,8 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
-
 
 import dash
 from dash import Dash, html, dcc, Input, Output
@@ -17,48 +12,22 @@ warnings.filterwarnings("ignore", category=FutureWarning)
 
 # In[2]:
 
+app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
+server = app.server
 
-df = pd.read_csv('purine data new.csv')
-df
-
-
-# In[3]:
+df = pd.read_csv('Purine data new.csv')
 
 
 user = pd.read_csv('gout_patient_data.csv')
-user
-
-
-# In[4]:
-
 
 user['Date'] = user['Date'].apply(lambda x: datetime.strptime(x, "%d/%m/%Y"))
 
 
-# In[5]:
-
-
 user['Date'] = pd.to_datetime(user['Date'])
-user.info()
-
-
-# In[6]:
-
 
 user['Month'] = pd.to_datetime(user['Date']).dt.month
 
-
-# In[7]:
-
-
 new_user = pd.melt(user, id_vars=['Date','Month','User'], var_name='Categories', value_name='Value')
-new_user.head()
-
-
-# In[8]:
-
-
-app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
 food_quantities = {food: 0 for food in df['Foods']}
 
