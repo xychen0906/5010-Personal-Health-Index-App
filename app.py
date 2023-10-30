@@ -13,7 +13,7 @@ warnings.filterwarnings("ignore", category=FutureWarning)
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 server = app.server
 
-df = pd.read_csv('purine data new.csv')
+df = pd.read_csv('Purine data new.csv')
 
 user = pd.read_csv('gout_patient_data.csv')
 
