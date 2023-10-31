@@ -99,7 +99,7 @@ app.layout = html.Div(
                     value=new_user['Month'].min(),
                     marks={str(month):str(month) for month in new_user['Month'].unique()},
                 )
-            ], style={'max-width': '800px', 
+            ], style={'max-width': '1200px', 
                       'margin':'0 auto',
                       'display': 'flex',
                       'flex-direction': 'column',
@@ -129,7 +129,7 @@ app.layout = html.Div(
                 html.Div(id='user_intake'),
                 dcc.Graph(id='purines-bar-chart'),
                 html.Button('Add', id='add_button', n_clicks=0)
-            ], style={'max-width': '800px', 
+            ], style={'max-width': '1200px', 
                       'margin':'0 auto',
                       'display': 'flex',
                       'flex-direction': 'column',
